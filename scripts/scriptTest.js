@@ -9,16 +9,30 @@
 $(document).ready(function() {
 	
 	$("#submitButton").click(function(){
-		var input = $("#userInput").val();
-		console.log(input);
+		var pokeOne =(Math.floor(Math.random() * 720))+1;
+		var pokeTwo =(Math.floor(Math.random() * 720))+1;
+//		
+//		var input = $("#userInput").val();
+//		console.log(input);
 		
 	$.ajax({
 		method: "GET",
-		url: "https://pokeapi.co/api/v2/pokemon/" + input + "/",
+		url: "https://pokeapi.co/api/v2/pokemon/" + pokeOne + "/",
 		success: function(data){
-	  			$("#pokemonName").html(data.id);
+	  			$("#pokemonOne").html(data.name);
 	  		}
 	});
+	$.ajax({
+		method: "GET",
+		url: "https://pokeapi.co/api/v2/pokemon/" + pokeTwo + "/",
+		success: function(data){
+			$("#pokemonTwo").html(data.name);
+		}
+	});
+	
+	
+	
+
 		
 	});
 	
