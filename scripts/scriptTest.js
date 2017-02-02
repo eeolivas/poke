@@ -14,7 +14,7 @@ $(document).ready(function() {
 		
 	$.ajax({
 		method: "GET",
-		url: "http://pokeapi.co/api/v2/pokemon/" + input + "/",
+		url: "https://pokeapi.co/api/v2/pokemon/" + input + "/",
 		success: function(data){
 	  			$("#pokemonName").html(data.name);
 	  		}
