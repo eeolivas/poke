@@ -17,9 +17,9 @@ $(document).ready(function() {
 			url: "https://pokeapi.co/api/v2/pokemon/" + pokeOne + "/",
 			success: function(data){
 	  			$("#pokemonOne").html(data.name);
-	  			$("#attackStat1").html(data.stats[4].base_stat);
-	  			$("#defenseStat1").html(data.stats[3].base_stat);
-	  			$("#speedStat1").html(data.stats[1].base_stat);	  			
+	  			$("#attackStat1").html("Attack: " + data.stats[4].base_stat);
+	  			$("#defenseStat1").html("Defense: " + data.stats[3].base_stat);
+	  			$("#speedStat1").html("Speed: " + data.stats[1].base_stat);	  			
 	  		}
 		});
 		$.ajax({
@@ -27,6 +27,9 @@ $(document).ready(function() {
 			url: "https://pokeapi.co/api/v2/pokemon/" + pokeTwo + "/",
 			success: function(data){
 				$("#pokemonTwo").html(data.name);
+	  			$("#attackStat1").html("Attack: " + data.stats[4].base_stat);
+	  			$("#defenseStat1").html("Defense: " + data.stats[3].base_stat);
+	  			$("#speedStat1").html("Speed: " + data.stats[1].base_stat);	  
 			}
 		});
 		
