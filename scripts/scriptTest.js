@@ -13,7 +13,7 @@ $(document).ready(function() {
 		var pokeTwo =(Math.floor(Math.random() * 720))+1;
 
 		
-		function testAjax(num) {
+		function getPokemon(num) {
 		    var result=null;
 		    $.ajax({
 		      url:"https://pokeapi.co/api/v2/pokemon/" + num + "/",
@@ -25,11 +25,11 @@ $(document).ready(function() {
 		   return result;
 		}
 		
-		var poke1 = testAjax(pokeOne);
-		console.log(poke1);
+		var poke1 = getPokemon(pokeOne);
+		console.log(poke1.name);
 		
-		var poke2 = JSON.parse(testAjax(pokeTwo));
-		console.log(poke1);
+		var poke2 = getPokemon(pokeTwo);
+		console.log(poke2.name);
 		
 			$.ajax({
 			method: "GET",
