@@ -11,9 +11,6 @@ $(document).ready(function() {
 	$("#submitButton").click(function(){
 		var pokeOne =(Math.floor(Math.random() * 720))+1;
 		var pokeTwo =(Math.floor(Math.random() * 720))+1;
-//		
-//		var input = $("#userInput").val();
-//		console.log(input);
 		
 	$.ajax({
 		method: "GET",
