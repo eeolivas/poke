@@ -13,7 +13,7 @@ $(document).ready(function() {
 		var pokeTwo =(Math.floor(Math.random() * 720))+1;
 
 		
-		var pokemonOne = $.ajax({
+		var pokemonOne = $.parseJSON($.ajax({
 			method: "GET",
 			url: "https://pokeapi.co/api/v2/pokemon/" + pokeOne + "/",
 			success: function(data){
@@ -23,10 +23,11 @@ $(document).ready(function() {
 	  			$("#speedStat1").html("Speed: " + data.stats[1].base_stat);	 
 	  			return data;
 	  		}
-		});
+		}));
+		console.log(pokemonOne); 
 		
 		
-		var pokemonTwo = JSON.parse($.ajax({
+		var pokemonTwo = $.parseJSON($.ajax({
 			method: "GET",
 			url: "https://pokeapi.co/api/v2/pokemon/" + pokeTwo + "/",
 			success: function(data){
