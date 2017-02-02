@@ -27,9 +27,9 @@ $(document).ready(function() {
 			url: "https://pokeapi.co/api/v2/pokemon/" + pokeTwo + "/",
 			success: function(data){
 				$("#pokemonTwo").html(data.name);
-	  			$("#attackStat1").html("Attack: " + data.stats[4].base_stat);
-	  			$("#defenseStat1").html("Defense: " + data.stats[3].base_stat);
-	  			$("#speedStat1").html("Speed: " + data.stats[1].base_stat);	  
+	  			$("#attackStat2").html("Attack: " + data.stats[4].base_stat);
+	  			$("#defenseStat2").html("Defense: " + data.stats[3].base_stat);
+	  			$("#speedStat2").html("Speed: " + data.stats[1].base_stat);	  
 			}
 		});
 		
