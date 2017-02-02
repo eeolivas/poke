@@ -17,6 +17,9 @@ $(document).ready(function() {
 			url: "https://pokeapi.co/api/v2/pokemon/" + pokeOne + "/",
 			success: function(data){
 	  			$("#pokemonOne").html(data.name);
+	  			$("#attackStat1").html(data.attack);
+	  			$("#defenseStat1").html(data.defense);
+	  			
 	  		}
 		});
 		$.ajax({
