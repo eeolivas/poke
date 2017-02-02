@@ -12,10 +12,9 @@ $(document).ready(function() {
 		var pokeOne =(Math.floor(Math.random() * 720))+1;
 		var pokeTwo =(Math.floor(Math.random() * 720))+1;
 		
-		
-		  function getJson(pokeNum) {
-	            return JSON.parse($.ajax({
-	                type: "GET",
+		function getJson(pokeNum) {
+			return JSON.parse($.ajax({
+	                method: "GET",
 	                url: "https://pokeapi.co/api/v2/pokemon/" + pokeNum + "/",
 	                dataType: 'json',
 	                success: function (data) {
