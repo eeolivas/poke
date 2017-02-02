@@ -13,6 +13,50 @@ $(document).ready(function() {
 		var pokeTwo =(Math.floor(Math.random() * 720))+1;
 
 		
+		function getPokemonID(num) {
+		    var result=null;
+		    $.ajax({
+		      url:"https://pokeapi.co/api/v2/pokemon/" + num + "/",
+		      async: false,  
+		      success:function(data) {
+		         result = data.id; 
+		      }
+		   });
+		   return result;
+		}
+		
+		
+		function getPokemonName(num) {
+			var result=null;
+			$.ajax({
+				url:"https://pokeapi.co/api/v2/pokemon/" + num + "/",
+				async: false,  
+				success:function(data) {
+					result = data.name; 
+				}
+			});
+			return result;
+		}
+		
+		
+		var pokemon1 = {
+			"id": null,
+			"name" : null
+		};
+		
+		pokemon1.id=getPokemonID(pokeOne);
+		pokemon1.name=getPokemonName(pokeOne);
+		
+		console.log(pokemon1.id);
+		console.log(pokemon1.name);
+
+		
+		
+		
+		
+		
+		
+		
 		function getPokemon(num) {
 		    var result=null;
 		    $.ajax({
