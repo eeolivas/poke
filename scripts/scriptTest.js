@@ -60,7 +60,7 @@ $(document).ready(function() {
 		//fully qalified name for the local server - just use relative path when deploying to github
 	//	var url1 = "<img src=L:\resources\sprites\pokemon/" + global.poke[0].id + ".png />"
 		
-		use this when deploying to github for sprites
+		//use this when deploying to github for sprites
 		var url1 = "<img src=resources/sprites/pokemon/" + global.poke[0].id + ".png />"
 		$('#pokePic1').empty().prepend(url1);
 		
