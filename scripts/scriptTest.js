@@ -49,6 +49,7 @@ $(document).ready(function() {
 	
 	//clears all fields for a new battle
 	function clearInfoFields(){
+		$("#matchup").addClass("hidden");
 		$("#showMatchup").addClass("hidden");
 		$("#battleBtn").addClass("hidden");
 		$('#poke1HpBar').attr('aria-valuenow',100).css('width',100 +'%');
@@ -77,6 +78,7 @@ $(document).ready(function() {
 		
 	$("#showMatchup").click(function(){
 		console.log("show Matchup Now");
+		$('#matchup').removeClass("hidden");
 		//Grabs the images and places them in the correct location on html file
 		var url1 = "<img src=resources/sprites/pokemon/" + global.poke[0].id + ".png width=\"30%\" />"
 		var url2 = "<img src=resources/sprites/pokemon/" + global.poke[1].id + ".png width=\"30%\"/>"
