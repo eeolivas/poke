@@ -20,14 +20,13 @@ $(document).ready(function() {
 			global.pokeLevel[0] = level1;
 			level2 =(Math.floor(Math.random() * 99))+1;
 			global.pokeLevel[1] = level2;
-		} while((level1>(1.5*level2))||(level2>(1.5*level1)));
+		} while((level1>(1.25*level2))||(level2>(1.25*level1)));
 	}
 	
 	// randomly generates pokemon and stores them as objects in global.poke[]
 	function getPokemon(){
 		generatePokeLevels();
 		global.counter=0;
-		console.log("beginning loop");
 		for(ii=0; ii<2; ii++){
 			var rand =(Math.floor(Math.random() * 720))+1;
 				$.ajax({
@@ -37,15 +36,11 @@ $(document).ready(function() {
 						global.counter++;
 						console.log(global.counter);
 						if(global.counter === 2){
-							$("#showMatchup").removeClass("hidden");
-							$("#battleBtn").removeClass("hidden");
+							$("#showMatchup").removeClass("hidden");	
 						}
 						if(global.poke.length > 1){
 							global.poke.splice(2,2);
 						}						
-					
-						console.log("length of pokemon array " + global.poke.length);
-						console.log("length of Level array " + global.pokeLevel.length);
 						
 					}
 				});
@@ -53,13 +48,6 @@ $(document).ready(function() {
 			}
 		}
 	
-	
-		
-//		for(ii=0; ii<2; ii++){
-//			var level =(Math.floor(Math.random() * 99))+1;
-//			console.log("Level being pushed into level array: " + level);
-//			global.pokeLevel.unshift(level);
-//		}
 	//clears all fields for a new battle
 	function clearInfoFields(){
 		$("#showMatchup").addClass("hidden");
@@ -106,7 +94,9 @@ $(document).ready(function() {
 		$("#heightOne").html("Height: " + (global.poke[0].height)/10 + "m");
 		$("#heightTwo").html("Height: " + (global.poke[1].height)/10 + "m");
 		$("#weightOne").html("Weight: " + (global.poke[0].weight)/10 + "kg");
-		$("#weightTwo").html("Weight: " + (global.poke[1].weight)/10 + "kg");	
+		$("#weightTwo").html("Weight: " + (global.poke[1].weight)/10 + "kg");
+		$("#battleBtn").removeClass("hidden");
+		$("#showMatchup").addClass("hidden");
 	});
 
 		
@@ -150,12 +140,17 @@ $(document).ready(function() {
 		
 		var damage=0;
 		var crit=0; //variable for determining ciritcal hits
+		var miss=0; // determines if a pokemon is going to miss its attack
 		while((poke0Hp>0) && (poke1Hp>0) ){
 			if(turn===0){
 				damage = ((((2*poke1Lvl)+10)/200)*((poke1Atk*poke1Atk)/(1.25*poke0Dfns))+2);
 				console.log(global.poke[1].name + " attacking now");
 				crit=(Math.floor(Math.random() * 249))+1;
-				if((global.poke[1].stats[0].base_stat)>crit){
+				miss=(Math.floor(Math.random() * 99))+1;
+				if(miss%6 ===0){
+					console.log("MISSED!");
+					poke0Hp=poke0Hp+0;
+				}else if((global.poke[1].stats[0].base_stat)>crit){
 					console.log("ciritical hit!");
 					poke0Hp = poke0Hp -(2*damage);
 				}else{
@@ -168,7 +163,11 @@ $(document).ready(function() {
 				damage = ((((2*poke0Lvl)+10)/200)*((poke1Atk*poke1Atk)/(1.25*poke0Dfns))+2);
 				console.log(global.poke[0].name + " attacking now");
 				crit=(Math.floor(Math.random() * 249))+1;
-				if((global.poke[0].stats[0].base_stat)>crit){
+				miss=(Math.floor(Math.random() * 99))+1;
+				if(miss%6 ===0){
+					console.log("MISSED!");
+					poke1Hp=poke1Hp+0;
+				}else if((global.poke[0].stats[0].base_stat)>crit){
 					console.log("ciritical hit!");
 					poke1Hp = poke1Hp -(2*damage);
 				}else{
