@@ -34,7 +34,6 @@ $(document).ready(function() {
 					success:function(data) {
 						global.poke.unshift(data);
 						global.counter++;
-						console.log(global.counter);
 						if(global.counter === 2){
 							$("#showMatchup").removeClass("hidden");	
 						}
@@ -58,6 +57,8 @@ $(document).ready(function() {
 		$('#pokePic2').addClass("hidden");
 		$('#poke1Hp').addClass("hidden");
 		$('#poke2Hp').addClass("hidden");
+		$('#poke1Banner').addClass("hidden");
+		$('#poke2Banner').addClass("hidden");
 		$("#pokemonOne").empty();
 		$("#pokemonLevelOne").empty();
 		$("#pokemonLevelTwo").empty();
@@ -182,9 +183,11 @@ $(document).ready(function() {
 		}
 		
 		if(poke0Hp<=0){
+			$("#poke2Banner").removeClass("hidden");
 			console.log(global.poke[1].name + " WINS!");
 		}
 		if(poke1Hp<=0){
+			$("#poke1Banner").removeClass("hidden");
 			console.log(global.poke[0].name + " WINS!");
 		}
 		

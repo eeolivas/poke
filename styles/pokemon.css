@@ -28,6 +28,10 @@ body{
 	text-align: center;
 }
 
+#poke1Banner, #poke2Banner{
+	color: #006600;
+}
+
 #pokePic1, #poke2Hp{
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
