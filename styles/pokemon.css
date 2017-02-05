@@ -1,0 +1,41 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	background-color: #580000;
+}
+#matchup{
+	background-color: #6491c0;	
+}
+#matchupButtons{
+	text-align: center	
+}
+#battleButton{
+	padding-top: 15px;
+	text-align: center	
+}
+#matchupButtons > .container{
+	padding-top: 15px;	
+	padding-bottom: 15px;	
+}
+
+#Header{
+	text-align: center;
+	color: #FFFFFF;
+}
+
+#poke1, #poke2{
+	display:inline;
+	text-align: center;
+}
+
+#pokePic1, #poke2Hp{
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+    
+}
+
+
