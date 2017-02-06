@@ -28,7 +28,7 @@ $(document).ready(function() {
 		generatePokeLevels();
 		global.counter=0;
 		for(ii=0; ii<2; ii++){
-			var rand =(Math.floor(Math.random() * 720))+1;
+			var rand =(Math.floor(Math.random() * 485))+1;
 				$.ajax({
 					url:"https://pokeapi.co/api/v2/pokemon/" + rand + "/",  
 					success:function(data) {
@@ -145,15 +145,15 @@ $(document).ready(function() {
 		var crit=0; //variable for determining ciritcal hits
 		var miss=0; // determines if a pokemon is going to miss its attack
 		while((poke0Hp>0) && (poke1Hp>0) ){
+			crit=(Math.random() * 3)+0.25;
+			miss=(Math.floor(Math.random() * 99))+1;
 			if(turn===0){
-				damage = ((((2*poke1Lvl)+10)/200)*((poke1Atk*poke1Atk)/(1.25*poke0Dfns))+2);
-				console.log(global.poke[1].name + " attacking now");
-				crit=(Math.floor(Math.random() * 249))+1;
-				miss=(Math.floor(Math.random() * 99))+1;
+				damage = ((((2*poke1Lvl)+10)/200)*((poke1Atk*(global.poke[1].stats[4].base_stat))/(1.25*poke0Dfns))+2);
+				console.log(global.poke[1].name + " attacking now");			
 				if(miss%6 ===0){
 					console.log("MISSED!");
 					poke0Hp=poke0Hp+0;
-				}else if((global.poke[1].stats[0].base_stat)>crit){
+				}else if((poke1Spd/poke0Spd)>crit){
 					console.log("ciritical hit!");
 					poke0Hp = poke0Hp -(2*damage);
 				}else{
@@ -163,14 +163,12 @@ $(document).ready(function() {
 				$('#poke1HpBar').attr('aria-valuenow',poke0Percent).css('width',poke0Percent +'%');
 				console.log(global.poke[0].name + " Hp: " + poke0Hp);
 			} else{
-				damage = ((((2*poke0Lvl)+10)/200)*((poke1Atk*poke1Atk)/(1.25*poke0Dfns))+2);
+				damage = ((((2*poke0Lvl)+10)/200)*((poke0Atk*(global.poke[0].stats[4].base_stat))/(1.25*poke1Dfns))+2);
 				console.log(global.poke[0].name + " attacking now");
-				crit=(Math.floor(Math.random() * 249))+1;
-				miss=(Math.floor(Math.random() * 99))+1;
 				if(miss%6 ===0){
 					console.log("MISSED!");
 					poke1Hp=poke1Hp+0;
-				}else if((global.poke[0].stats[0].base_stat)>crit){
+				}else if((poke0Spd/poke1Spd)>crit){
 					console.log("ciritical hit!");
 					poke1Hp = poke1Hp -(2*damage);
 				}else{
